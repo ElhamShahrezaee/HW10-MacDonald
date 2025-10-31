@@ -44,6 +44,16 @@ export function renderOrder() {
       </div>
     `;
 
+    // add event listeners here instead of inline onclick
+    itemDiv.querySelector(".add").addEventListener("click", () => {
+      addItem(item.id);
+      renderApp();
+    });
+    itemDiv.querySelector(".remove").addEventListener("click", () => {
+      removeItem(item.id);
+      renderApp();
+    });
+
     orderGrid.appendChild(itemDiv);
   });
   container.appendChild(orderGrid);
