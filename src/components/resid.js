@@ -53,5 +53,26 @@ export function renderResid() {
     </button>
   `;
 
+  const discountInput = container.querySelector("#discountCode");
+  const applyBtn = container.querySelector("#applyDiscountBtn");
+  const submitBtn = container.querySelector("#submitOrderBtn");
+
+  applyBtn.addEventListener("click", () => {
+    const code = discountInput.value.trim();
+    applyDiscount(code);
+    renderApp();
+  });
+
+  submitBtn.addEventListener("click", () => {
+    console.log(getTotalPrice());
+    if (getTotalPrice() == 0) {
+      alert("آیتمی انتخاب نشده است. لطفا ابتدا سفارش خود را نمایید.");
+      return;
+    }
+    submitOrder();
+    renderApp();
+    alert("سفارش شما ثبت شد!");
+  });
+
   return container;
 }
