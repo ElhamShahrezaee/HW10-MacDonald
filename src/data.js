@@ -70,3 +70,57 @@ export const items = [
     image: "src/images/salad.png",
   },
 ];
+
+export const taxPercent = 9;
+export let discountPercent = 0;
+
+export function addItem(id) {
+  const item = items.find((i) => i.id === id);
+  if (item) item.count++;
+}
+export function removeItem(id) {
+  const item = items.find((i) => i.id === id);
+  if (item && item.count > 0) item.count--;
+}
+
+export function applyDiscount(code) {
+  const normalized = code.trim().toLowerCase();
+
+  switch (normalized) {
+    case "bronze":
+      discountPercent = 10;
+      break;
+    case "silver":
+      discountPercent = 15;
+      break;
+    case "gold":
+      discountPercent = 20;
+      break;
+    default:
+      discountPercent = 0;
+  }
+  return discountPercent;
+}
+
+export function getTotalItems() {
+  return items.reduce((sum, i) => sum + i.price * i.count, 0);
+}
+
+export function getTax() {
+  return (getTotalItems() * taxPercent) / 100;
+}
+
+export function getDiscount() {
+  return ((getTotalItems() + getTax()) * discountPercent) / 100;
+}
+
+export function getTotalPrice() {
+  return (getTotalItems() + getTax() - getDiscount()).toFixed(0);
+}
+
+export function submitOrder() {
+  discountPercent = 0;
+  for (const item of items) {
+    item.count = 0;
+  }
+}
