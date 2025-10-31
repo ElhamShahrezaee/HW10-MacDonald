@@ -48,7 +48,7 @@ export function renderResid() {
     </div>
 
     <button id="submitOrderBtn"
-            class="w-full mt-5 bg-[#008292] text-white py-2 rounded-lg hover:bg-green-700 transition">
+            class="w-full mt-5 bg-[#008292] text-white py-2 rounded-lg hover:bg-blue-700 transition">
       ثبت سفارش
     </button>
   `;
@@ -66,7 +66,7 @@ export function renderResid() {
   submitBtn.addEventListener("click", () => {
     console.log(getTotalPrice());
     if (getTotalPrice() == 0) {
-      alert("آیتمی انتخاب نشده است. لطفا ابتدا سفارش خود را نمایید.");
+      alert("آیتمی انتخاب نشده است. لطفا ابتدا سفارش خود را وارد نمایید.");
       return;
     }
     submitOrder();

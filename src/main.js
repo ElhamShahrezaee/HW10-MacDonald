@@ -11,11 +11,9 @@ export function renderApp() {
   wrapper.className =
     "flex flex-col md:flex-row gap-5 justify-center items-start w-full p-4 bg-[#00688e]";
 
-  // Append your components to the wrapper
   wrapper.appendChild(renderOrder());
   wrapper.appendChild(renderResid());
 
-  // Add the wrapper to the app
   app.appendChild(wrapper);
 }
 window.renderApp = renderApp;
